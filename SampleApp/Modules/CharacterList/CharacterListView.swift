@@ -13,13 +13,16 @@ struct CharacterListView: View {
                         .onTapGesture {
                             viewModel.onTap(character: ch)
                         }
+                        .task {
+                            if let lastMemberId = viewModel.charactersList.last?.id,
+                               lastMemberId == ch.id {
+                                await viewModel.getNextPage()
+                            }
+                        }
                 }
             }
             ProgressView()
                 .padding(.top)
-                .task {
-                    await viewModel.getNextPage()
-                }
         }
         .navigationTitle("Characters")
         .task { await viewModel.getNextPage() }

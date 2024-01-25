@@ -7,6 +7,7 @@ class CharacterListViewModel: ViewModel, ObservableObject {
     private var cancellableSet = Set<AnyCancellable>()
     private let ramDataInteractor: RAMDataInteractor
     private(set) var nextPage = 1
+    private(set) var lastPage = Int.max
     
     // MARK: Published Properties
     @Published var charactersList = [RAMCharacter]()
@@ -24,7 +25,7 @@ class CharacterListViewModel: ViewModel, ObservableObject {
     override func unload() { super.unload() }
     
     func getNextPage() async {
-        guard !isLoading else { return }
+        guard !isLoading, nextPage <= lastPage else { return }
         do {
             self.isLoading = true
             let response = try await ramDataInteractor.getRAMCharacterList(page: nextPage)
@@ -32,7 +33,9 @@ class CharacterListViewModel: ViewModel, ObservableObject {
                 var newList = self.charactersList
                 newList.append(contentsOf: response.results)
                 self.charactersList = newList
+                print("Page \(nextPage) retrieved")
                 nextPage += 1
+                self.lastPage = response.info.pages
                 self.isLoading = false
             }
         }
