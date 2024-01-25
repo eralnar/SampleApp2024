@@ -24,7 +24,7 @@ class SampleAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testDataModels() async throws {
+    func testDataModelsGetsParsedCorrectly() async throws {
         let result = try await network.getRAMCharacterList(page: 1)
         XCTAssertNotNil(result)
         XCTAssertTrue(result.results.count == 20)
@@ -33,13 +33,13 @@ class SampleAppTests: XCTestCase {
         XCTAssertTrue(result.results[0].origin.name == "Earth (C-137)")
     }
     
-    func testCharacterListViewModelNextPage() async throws {
+    func testCharacterListViewModelGetsNextPage() async throws {
         await characterListVM.getNextPage()
         XCTAssert(characterListVM.charactersList.count == 20)
         XCTAssert(characterListVM.nextPage == 2)
     }
     
-    func testCharacterListViewModelNext3Pages() async throws {
+    func testCharacterListViewModelGetsNext3Pages() async throws {
         await characterListVM.getNextPage()
         await characterListVM.getNextPage()
         await characterListVM.getNextPage()
