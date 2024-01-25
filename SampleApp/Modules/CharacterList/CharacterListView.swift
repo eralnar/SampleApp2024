@@ -6,17 +6,22 @@ struct CharacterListView: View {
 
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible()), GridItem(.flexible())], spacing: 0.0) {
+            LazyVGrid(columns: [GridItem(.flexible(), spacing: 0),GridItem(.flexible(), spacing: 0)], spacing: 0.0) {
                 ForEach(viewModel.charactersList) { ch in
                     RAMCharacterCell(ramCharacter: ch)
+                        .border(Color.white, width: 1.0)
+                        .onTapGesture {
+                            viewModel.onTap(character: ch)
+                        }
                 }
-                ProgressView()
-                    .task {
-                        await viewModel.getNextPage()
-                    }
             }
+            ProgressView()
+                .padding(.top)
+                .task {
+                    await viewModel.getNextPage()
+                }
         }
-        .navigationTitle("Character List")
+        .navigationTitle("Characters")
         .task { await viewModel.getNextPage() }
         .onAppear {
             viewModel.load()
@@ -45,18 +50,28 @@ struct RAMCharacterCell: View {
             if let url = URL(string: ramCharacter.image) {
                 AsyncImage(url: url,
                            content: { image in
-                    image.resizable()
-                        .frame(height: 120.0)
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
                 }, placeholder: {
-                    ProgressView()
+                    Image("RAM-character-placeholder")
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
                 })
             }
+            LinearGradient(colors: [Color.white.opacity(0.6), Color.white.opacity(0.0)],
+                           startPoint: .bottom,
+                           endPoint: .top)
+                .frame(height: 70)
             Text(ramCharacter.name)
-                .padding(5)
+                .padding(.horizontal)
+                .padding(.vertical, 5)
                 .lineLimit(3)
-                .font(.body)
+                .font(.headline)
                 .foregroundColor(.black)
-                .shadow(color: Color.white, radius: 1, x: 0, y: 0)
+            
         }
         
     }

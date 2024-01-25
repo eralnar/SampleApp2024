@@ -24,6 +24,7 @@ class CharacterListViewModel: ViewModel, ObservableObject {
     override func unload() { super.unload() }
     
     func getNextPage() async {
+        guard !isLoading else { return }
         do {
             self.isLoading = true
             let response = try await ramDataInteractor.getRAMCharacterList(page: nextPage)
@@ -37,8 +38,13 @@ class CharacterListViewModel: ViewModel, ObservableObject {
         }
         catch {
             print("Show error \(error)")
+            //TODO: Manage error properly
             await MainActor.run { self.isLoading = false }
         }
+    }
+    
+    func onTap(character: RAMCharacter) {
+        coordinator.openDetail(character: character)
     }
 
 }

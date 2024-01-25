@@ -24,6 +24,10 @@
 		B39633402B61551F00CE69DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396333F2B61551F00CE69DB /* AppDelegate.swift */; };
 		B39633422B61563600CE69DB /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = B39633412B61563600CE69DB /* Preview Content */; };
 		B396334F2B61597B00CE69DB /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B396334E2B61597B00CE69DB /* ViewModel.swift */; };
+		B3C40A322B62DF4B0077D493 /* CharacterDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C40A2F2B62DF4B0077D493 /* CharacterDetailCoordinator.swift */; };
+		B3C40A332B62DF4B0077D493 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C40A302B62DF4B0077D493 /* CharacterDetailView.swift */; };
+		B3C40A342B62DF4B0077D493 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C40A312B62DF4B0077D493 /* CharacterDetailViewModel.swift */; };
+		B3C40A362B62EBCD0077D493 /* CardViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C40A352B62EBCD0077D493 /* CardViewStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		B396333F2B61551F00CE69DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B39633412B61563600CE69DB /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		B396334E2B61597B00CE69DB /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B3C40A2F2B62DF4B0077D493 /* CharacterDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCoordinator.swift; sourceTree = "<group>"; };
+		B3C40A302B62DF4B0077D493 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		B3C40A312B62DF4B0077D493 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
+		B3C40A352B62EBCD0077D493 /* CardViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,7 @@
 			children = (
 				B396334D2B61596C00CE69DB /* Base */,
 				B333D36C2B614F0F0036EC20 /* CharacterList */,
+				B3C40A2E2B62DF260077D493 /* CharacterDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -222,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				B3873C782B616B2F00ADFE94 /* JSON */,
-				B396333E2B61533A00CE69DB /* Utilities */,
+				B396333E2B61533A00CE69DB /* ViewModifiers */,
 				B396333B2B6152CF00CE69DB /* Extensions */,
 				B36997212B614C180058F728 /* Assets.xcassets */,
 				B39633412B61563600CE69DB /* Preview Content */,
@@ -230,11 +239,12 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B396333E2B61533A00CE69DB /* Utilities */ = {
+		B396333E2B61533A00CE69DB /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				B3C40A352B62EBCD0077D493 /* CardViewStyle.swift */,
 			);
-			path = Utilities;
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 		B396334D2B61596C00CE69DB /* Base */ = {
@@ -243,6 +253,16 @@
 				B396334E2B61597B00CE69DB /* ViewModel.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		B3C40A2E2B62DF260077D493 /* CharacterDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B3C40A2F2B62DF4B0077D493 /* CharacterDetailCoordinator.swift */,
+				B3C40A302B62DF4B0077D493 /* CharacterDetailView.swift */,
+				B3C40A312B62DF4B0077D493 /* CharacterDetailViewModel.swift */,
+			);
+			path = CharacterDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,13 +405,17 @@
 				B3873C8E2B61C17600ADFE94 /* CharacterListViewModel.swift in Sources */,
 				B3873C772B61698900ADFE94 /* RickAndMortyDataModels.swift in Sources */,
 				B3873C6C2B615FCC00ADFE94 /* View+Extensions.swift in Sources */,
+				B3C40A332B62DF4B0077D493 /* CharacterDetailView.swift in Sources */,
 				B3873C7C2B61758700ADFE94 /* NetworkManager.swift in Sources */,
 				B3873C802B61B65700ADFE94 /* RAMDataInteractor.swift in Sources */,
 				B3873C7E2B617F8900ADFE94 /* RAMApi.swift in Sources */,
+				B3C40A342B62DF4B0077D493 /* CharacterDetailViewModel.swift in Sources */,
 				B3873C8D2B61C17600ADFE94 /* CharacterListView.swift in Sources */,
 				B3873C8C2B61C17600ADFE94 /* CharacterListCoordinator.swift in Sources */,
+				B3C40A362B62EBCD0077D493 /* CardViewStyle.swift in Sources */,
 				B39633402B61551F00CE69DB /* AppDelegate.swift in Sources */,
 				B369971E2B614C160058F728 /* SampleAppApp.swift in Sources */,
+				B3C40A322B62DF4B0077D493 /* CharacterDetailCoordinator.swift in Sources */,
 				B396334F2B61597B00CE69DB /* ViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
